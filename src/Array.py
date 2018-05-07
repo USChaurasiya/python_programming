@@ -20,6 +20,7 @@ class Arraysample:
         for i in range(int(num)):
             n = int(input("num :"))
             num_array.append(int(n))
+        return num_array
         display(num_array)
 
     def elementbyindex(self):
