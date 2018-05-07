@@ -1,6 +1,5 @@
-import itertools
 import src.Array as Array
-
+import itertools
 
 class PythonClass:
     def __init__(self):
@@ -77,3 +76,83 @@ class PythonClass:
                     second_index = x
         print("Output :", first_index, ",", second_index)
 
+
+    def elementssumequaltozero(self):
+        print("Problem 6 : ---------Finding three number Having Sum equal to Zero-----------", '\n')
+        numbers = Array.Arraysample.inputarray(self)
+        # for x in range(numbers.__len__()):
+        #     for y in range(numbers.__len__()-1):
+        #         for z in range(numbers.__len__()-2):
+        #             if numbers[x] + numbers[y] + numbers[z] == 0:
+        #                 first_index = z
+        #                 second_index = y
+        #                 third_index = x
+        # print("Output :", first_index, ",", second_index, ",", third_index)
+        # numbers.sort(reverse=True)
+        # for triplet in itertools.combinations(numbers, 3):
+        #     if sum(triplet) == 0:
+        #         print("::::", list(triplet))
+        #         return list(triplet)
+        # return []
+        print("Input Array is : ", numbers)
+        status = False
+        for i in range(0, numbers.__len__() - 2):
+            for j in range(i + 1, numbers.__len__() - 1):
+                for k in range(j + 1, numbers.__len__()):
+                    if (numbers[i] + numbers[j] + numbers[k] == 0):
+                        print("Triplets Are :", numbers[i], numbers[j], numbers[k], '\n')
+                        status = True
+        if (status == False):
+            print(" No Triplet Found Whose sum is Equal to Zero. ", '\n')
+
+    def powercalculation(self):
+        print("Problem 7 : ----------Implementation of Power Method-----------", '\n')
+        base = int(input("Enter the Base Value: "))
+        power = int(input("Enter the Power :"))
+        print("Output : ", self.pow(base, power), '\n')
+
+
+    def pow(self, base, power):
+        if (power == 0):
+            return 1
+        elif (int(power % 2) == 0):
+            return (pow(base, int(power / 2)) * pow(base, int(power / 2)))
+
+        else:
+            return (base * pow(base, int(power / 2)) * pow(base, int(power / 2)))
+        print("Output ::", base)
+
+
+    def reverse_string(self):
+        print("Problem 8 : ----------Reversing The String Word-----------", '\n')
+        string = input("Enter the String :")
+        str = string.split(" ")
+        print(str)
+        rev_string = str.__reversed__()
+
+        print("Reversed String : ", ' '.join(rev_string), '\n')
+
+    def areaofrectangle(self):
+        print("Problem 10 : ----------Reversing The String Word-----------", '\n')
+        length = float(input("Enter the length of Rectangle :"))
+        width = float(input("Enter the Width of Rectangle :"))
+        area = length * width
+        print("Area of the Rectangel is : ", area, '\n')
+        return area
+
+
+class Circle:
+    def __init__(self, radius):
+        print("Problem 11 : ----------Area and Perimeter of Circle-----------", '\n')
+        self.radius = radius
+        self.pi = 3.14
+        print("Radius of Circle is :", radius)
+
+    def areaofcircle(self):
+
+        area = self.pi * self.radius * self.radius
+        print("Area of Circle having radius ", self.radius, "is :", area)
+
+    def perimeterofcircle(self):
+        perimeter = 2 * self.pi * self.radius
+        print("Perimeter of the Circle of radius ", self.radius, "is :", perimeter)

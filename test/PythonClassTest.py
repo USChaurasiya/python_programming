@@ -1,7 +1,7 @@
 import src.PythonClass as PythonClass
 
 pycls = PythonClass.PythonClass()
-
+circle = PythonClass.Circle(4.0)
 #pycls.integertoromannumeral()
 
 #pycls.romannumeraltointeger()
@@ -13,4 +13,15 @@ pycls = PythonClass.PythonClass()
    # print("Invalid Expression.", '\n')
 
 #pycls.findinguniquesubsest()
-pycls.findingpair()
+#pycls.findingpair()
+
+#pycls.elementssumequaltozero()
+
+#pycls.powercalculation()
+
+#pycls.reverse_string()
+
+#pycls.areaofrectangle()
+
+circle.areaofcircle()
+circle.perimeterofcircle()

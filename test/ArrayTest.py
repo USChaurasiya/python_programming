@@ -8,17 +8,17 @@ arrayinput.inputarray()
 
 #arrayinput.appendelementatend()
 
-arrayinput.reversearrayelement()
+#arrayinput.reversearrayelement()
 
 #arrayinput.lengthinbyte()
 
 #arrayinput.getcurrentmemoryaddress()
 
-arrayinput.numberofoccurence()
+#arrayinput.numberofoccurence()
 
 #arrayinput.appenditemtotheendofarray()
 
-arrayinput.converttobyte()
+#arrayinput.converttobyte()
 
 #arrayinput.appendfromspecifiedlist()
 
@@ -26,5 +26,5 @@ arrayinput.converttobyte()
 
 arrayinput.deleteelementbyindex()
 
-arrayinput.arraytolist()
+#arrayinput.arraytolist()
 
