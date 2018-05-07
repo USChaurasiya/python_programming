@@ -75,6 +75,5 @@ class PythonClass:
                 if numbers[x] + numbers[y] == target:
                     first_index = y
                     second_index = x
-
         print("Output :", first_index, ",", second_index)
 
