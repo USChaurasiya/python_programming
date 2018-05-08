@@ -10,6 +10,7 @@ class NpArray:
         self.type = input("Type of Array : ")
 
     def createarray(self):
+        print("Problem 1:: --------------------Creating NP Array And Initialize to 1----------------------", '\n')
         a = np.ones((3, 3), 'int32', 3)
         b = np.divide(a, 2)
         print("Array of int32 having shape (3,2) with initial value 0 :: ")
@@ -17,6 +18,7 @@ class NpArray:
         print(b, '\n ')
 
     def createtuple(self):
+        print("Problem 2:: --------------------Tuple having 5 Element----------------------", '\n')
         tuple1 = (1000, 501, 57)
         tuple2 = (1001, 502, 58)
         tuple3 = (1102, 503, 45)
@@ -29,6 +31,7 @@ class NpArray:
         print("Tuple as numpy array :: ", '\n', b)
 
     def matrixrandominit(self):
+        print("Problem 3:: --------------------Random Initialization of Matrix----------------------", '\n')
         random_matrix = np.random.rand(3, 3)*10
         t1 =time.time()
         print("First Matrix :: ")
@@ -45,6 +48,7 @@ class NpArray:
         print("Multiplication of matrix :: ", '\n', np.asarray(multiplication))
 
     def matrixmultiplication(self, matrix1, matrix2):
+        print(" --------------------Matrix Multiplication without Numpy---------------------", '\n')
         t1 = time.time()
         result = [[0 for row in range(len(matrix1))] for col in range(len(matrix2[0]))]
         for i in range(len(matrix1)):
@@ -62,6 +66,7 @@ class NpArray:
 
 
     def persistdataondisk(self,obj):
+        print(" -------------------Persisting Data on Disk using Pickle-----------------------", '\n')
         output = open('myfile.pkl', 'wb')
         pc._dump(obj, output)
         output.close()
@@ -76,8 +81,5 @@ class NpArray:
         a = np.random.randint(0, 500, 1200)
         b = np.reshape(a, (-1, 50))
         print(b)
-        #print(matrix)
-        #matrix1 = np.random.rand(50, 40)*10
-        #result = NpArray.matrixmultiplication(self, matrix, matrix1)
-        #print(result)
+       
 
