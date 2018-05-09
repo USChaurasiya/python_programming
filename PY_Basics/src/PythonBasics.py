@@ -166,6 +166,138 @@ class PythonBasic:
         n = int(input("Enter the Number of copy: "))
 
         first2char = string[:2]
-        fnat_string = ""
+        final_string = ""
         for i in range(n):
-            fnat_string = first2char + fnat_string
+            if string.__len__() < 2:
+                final_string = string + final_string
+            else:
+                final_string = first2char + final_string
+
+        print("Output :", final_string, '\n')
+
+    def isvowel(self):
+        print("-------------------------Is Input character is Vowel or not------------------", '\n')
+        char = input("Enter the Character :")
+        vowel_list = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
+        status = False
+        for x in range(vowel_list.__len__()):
+            if vowel_list[x] == char:
+                status = True
+
+        if status:
+            print(char, "is vowel", '\n')
+        else:
+            print(char, 'is not vowel', '\n')
+
+    def isdatapresent(self):
+        print("-----------------------is Particular data is present in Data Set-------------------------", '\n')
+        list =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+        n = int(input("Enter the Nnumber to check :"))
+        isPresent = False
+        for value in list:
+            if n == value:
+                isPresent = True
+
+        if isPresent:
+            print(n, "is Present in List")
+        else:
+            print(n, "is Not Present in List")
+
+    def generatinghistogram(self):
+
+        print("-----------------------Generating Histogram from Given List------------------------------", '\n')
+        list = []
+        n = int(input("Enter the number of list Element :"))
+        for i in range(n):
+            element = int(input("Element :"))
+            list.append(element)
+        print("Given Array:", list)
+        print("-------------Output----------------")
+        for x in list:
+            output = ''
+            times = x
+            while (times > 0):
+                output += '*'
+                times = times - 1
+            print(output, '\n')
+
+    def concatetheelementoflist(self):
+        print("------------------------Concate The element of given list------------------", '\n')
+        list = []
+        string = ""
+        n = int(input("Enter the number of list Element :"))
+        for i in range(n):
+            element = input("Element :")
+            list.append(element)
+        print("Given Array:", list)
+        for i in range(list.__len__()):
+            string = string + list[i]
+        print("Output as String is: ", string)
+
+    def printallevennumber(self):
+        print("-----------------------Printing all Even Number between a range-----------------")
+        numbers = [
+            386, 462, 47, 418, 907, 344, 236, 375, 823, 566, 597, 978, 328, 615, 953, 345,
+            399, 162, 758, 219, 918, 237, 412, 566, 826, 248, 866, 950, 626, 949, 687, 217,
+            815, 67, 104, 58, 512, 24, 892, 894, 767, 553, 81, 379, 843, 831, 445, 742, 717,
+            958, 743, 527
+        ]
+
+        for x in numbers:
+            if x == 237:
+                print(x)
+                break;
+            elif x % 2 == 0:
+                print(x)
+
+
+    def listdifference(self):
+        print("-----------------------Getting the Different Element from list-----------------", '\n')
+        color_list_1 = set(["White", "Black", "Red"])
+        color_list_2 = set(["Red", "Green"])
+        print("First List :", color_list_1)
+        print("Second List :", color_list_2, '\n')
+        print("Unique Element from Lists :", color_ist_1.difference(color_list_2))
+
+
+    def areaoftriangle(self):
+        print("------------------------------Area of Triangle-----------------------", '\n')
+        base = float(input("Enter triangle's base: "))
+        height = float(input("Enter Triangle's height : "))
+        area = base * height / 2
+        print("Area of Triangle having base", base, "and height", height, "is :", area, '\n')
+
+
+    def gcdoftwonumber(self):
+        print("------------------------------greatest common divisor (GCD) of two positive integers----------------------", '\n')
+        number1 = int(input("Enter First Number: "))
+        number2 = int(input("Enter Second Number: "))
+        gcd = 1
+
+        if number1 % number2 == 0:
+            print("GCD of",  number1, "and", number2, "is :", number2)
+            return number2
+
+        for k in range(int(number2 / 2), 0, -1):
+            if number1 % k == 0 and number2 % k == 0:
+                gcd = k
+                break
+        print("GCD of", number1, "and", number2, "is :", gcd)
+        return gcd
+
+    def lcmoftwonumber(self):
+        print("-------------------------LCM of two positive integers-----------------",'\n')
+        x = int(input("Enter First Number: "))
+        y = int(input("Enter Second Number: "))
+        if x > y:
+            z = x
+        else:
+            z = y
+
+        while (True):
+            if ((z % x == 0) and (z % y == 0)):
+                lcm = z
+                break
+            z += 1
+        print("LCM of", x, "and", y, "is :", lcm)
+        return lcm
