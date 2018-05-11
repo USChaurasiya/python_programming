@@ -1,6 +1,10 @@
 import sys
 import  pickle as pc
-import operator
+import stemming.porter
+
+#from stemming.porter2 import stem
+
+
 Users = []
 
 
@@ -106,4 +110,11 @@ class AddressBook:
 
     def occurenceoffname(self):
         fname = input("Enter First Name :")
-        print(AddressBook.all_keys.count(fname))
+        print(AddressBook.person_storage)
+
+
+    def ensuringsameaddress(self):
+        add1 = input("Enter the first address ::")
+        add2  = input("Enter the second Address :: ")
+
+        stemming.porter.stem("Uma")

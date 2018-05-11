@@ -5,5 +5,6 @@ import src.PYProject as py
 #user.secretuser()
 
 addressbook = py.AddressBook()
-addressbook.addpersontoaddressbook()
+#addressbook.addpersontoaddressbook()
 #addressbook.occurenceoffname()
+addressbook.ensuringsameaddress()
