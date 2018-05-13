@@ -1,6 +1,6 @@
 import sys
 import  pickle as pc
-import stemming.porter
+#import stemming.porter
 
 #from stemming.porter2 import stem
 
@@ -113,8 +113,8 @@ class AddressBook:
         print(AddressBook.person_storage)
 
 
-    def ensuringsameaddress(self):
-        add1 = input("Enter the first address ::")
-        add2  = input("Enter the second Address :: ")
-
-        stemming.porter.stem("Uma")
+    # def ensuringsameaddress(self):
+    #     add1 = input("Enter the first address ::")
+    #     add2  = input("Enter the second Address :: ")
+    #
+    #     stemming.porter.stem("Uma")
