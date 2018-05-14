@@ -1,0 +1,16 @@
+import src.PythonDictProble as pydict
+
+#pydict.sortingdict()
+#pydict.addingkeyindict()
+#pydict.concatenatemultipledict()
+#pydict.iskeyalreadyexistindict()
+#pydict.iteratedictusingloop()
+#pydict.dictcontainnumber()
+#pydict.squarethekeyvalue()
+#pydict.mergetwodict()
+#pydict.sumofallitemindict()
+#pydict.multiplyalldictvalue()
+#pydict.removekeyfromdict()
+#pydict.maptwolistintodict()
+#pydict.sortdictbykey()
+pydict.combinetwodict()
