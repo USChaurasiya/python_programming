@@ -78,9 +78,7 @@ class AddressBook:
         person.mobile = sys.argv[7]
         person.email = sys.argv[8]
 
-        for i, j in AddressBook.person_storage.items():
-            self.all_keys.append(i)
-            self.all_items.append(j)
+
 
         if self.all_keys.__len__() == 0:
             AddressBook.address_list.append(person)
@@ -111,10 +109,3 @@ class AddressBook:
     def occurenceoffname(self):
         fname = input("Enter First Name :")
         print(AddressBook.person_storage)
-
-
-    # def ensuringsameaddress(self):
-    #     add1 = input("Enter the first address ::")
-    #     add2  = input("Enter the second Address :: ")
-    #
-    #     stemming.porter.stem("Uma")
