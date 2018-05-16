@@ -1,12 +1,8 @@
 import sys
-import  pickle as pc
-#import stemming.porter
-
-#from stemming.porter2 import stem
-
+import pickle as pc
+from collections import Counter
 
 Users = []
-
 
 class User:
     def __init__(self):
@@ -51,23 +47,22 @@ class User:
 
 class AddressBook:
     person_storage = {}
+
     address_list = []
-    all_keys = []
-    all_items = []
     status = False
     def __init__(self):
 
         global person_storage
         global address_list
-        global all_keys
-        global all_items
         global status
+        #
         pkl_file = open('pyproject.pkl', 'rb')
         AddressBook.person_storage = pc.load(pkl_file)
 
     def addpersontoaddressbook(self):
         print("------------------------Adding Person in Address book-----------------------", '\n')
-
+        keys = {"fname", "lname", "streetaddress", "city", "state", "country", "mobile", "email"}
+        AddressBook.person_storage = dict([(key, []) for key in keys])
         person = AddressBook()
         person.fname = sys.argv[1]
         person.lname = sys.argv[2]
@@ -78,34 +73,32 @@ class AddressBook:
         person.mobile = sys.argv[7]
         person.email = sys.argv[8]
 
-
-
-        if self.all_keys.__len__() == 0:
-            AddressBook.address_list.append(person)
-        else:
-            for x in range(self.all_items.__len__()):
-                if person.email not in self.all_items[x]:
-                    AddressBook.address_list.append(person)
-                    print(person.fname, " added successfully...")
-                else:
-                    self.status = True
-        if self.status:
-            print("Person is already Exist with either same Mobile or Email.")
-
-        self.contacttodict(AddressBook.address_list)
+        AddressBook.set_key(AddressBook.person_storage, 'fname', person.fname)
+        AddressBook.set_key(AddressBook.person_storage, 'lname', person.lname)
+        AddressBook.set_key(AddressBook.person_storage, 'streetaddress', person.streetadd)
+        AddressBook.set_key(AddressBook.person_storage, 'city', person.city)
+        AddressBook.set_key(AddressBook.person_storage, 'state', person.state)
+        AddressBook.set_key(AddressBook.person_storage, 'country', person.country)
+        AddressBook.set_key(AddressBook.person_storage, 'mobile', person.mobile)
+        AddressBook.set_key(AddressBook.person_storage, 'email', person.email)
 
         output = open('pyproject.pkl', 'wb')
         pc._dump(AddressBook.person_storage, output)
         print(AddressBook.person_storage)
 
-    def contacttodict(self, list_of_contacts):
-        for item in range(list_of_contacts.__len__()):
-            AddressBook.person_storage[list_of_contacts[item].fname] =\
-                (list_of_contacts[item].fname, list_of_contacts[item].lname, list_of_contacts[item].streetadd,
-                 list_of_contacts[item].city, list_of_contacts[item].state, list_of_contacts[item].country,
-                 list_of_contacts[item].mobile, list_of_contacts[item].email)
+    def set_key(dictionary, key, value):
+        if key not in dictionary:
+            dictionary[key] = value
+
+        elif type(dictionary[key]) == list and (value not in dictionary[key]):
+            dictionary[key].append(value)
+
+        elif type(dictionary[key]) == list and (value in dictionary[key]):
+            pass
+        else:
+            dictionary[key] = [value]
+
+    # def occurenceoffname(self):
+    #     print(list(AddressBook.person_storage))
 
 
-    def occurenceoffname(self):
-        fname = input("Enter First Name :")
-        print(AddressBook.person_storage)
