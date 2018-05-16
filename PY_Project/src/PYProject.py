@@ -98,7 +98,30 @@ class AddressBook:
         else:
             dictionary[key] = [value]
 
-    # def occurenceoffname(self):
-    #     print(list(AddressBook.person_storage))
 
+
+    def occurenceoffname(self):
+        first_name = input("Enter the name :")
+        key = "fname"
+        print(AddressBook.person_storage)
+        counter = 0
+        for k in AddressBook.person_storage:
+            for x in range(AddressBook.person_storage.get(k).__len__()):
+                if k == key and AddressBook.person_storage.get(k)[x] == first_name:
+                    counter = counter + 1
+                    # print("Number of occurrence of Given name is :", AddressBook.person_storage.get(k).__len__())
+        print("Number of occurrence of Given first name is :", counter)
+
+
+
+
+    def occurrenceoflname(self):
+        last_name =input("Enter the last name :")
+        key = "lname"
+        counter = 0
+        for k in AddressBook.person_storage:
+            for x in range(AddressBook.person_storage.get(k).__len__()):
+                if k == key and AddressBook.person_storage.get(k)[x] == last_name:
+                    counter += 1
+        print("Number of occurrence of Given last name is :", counter)
 
