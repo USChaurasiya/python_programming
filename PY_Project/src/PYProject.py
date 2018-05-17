@@ -1,10 +1,10 @@
 import sys
+import numpy as np
 import pickle as pc
+import pandas
 from stemming.porter2 import stem
 from nltk.stem import PorterStemmer
-
-from nltk.stem import WordNetLemmatizer
-
+from openpyxl import workbook
 import  porterstemmer
 import nltk.corpus
 #import nltk.tokenize.punkt
@@ -137,44 +137,59 @@ class AddressBook:
         print("Number of occurrence of Given last name is :", counter)
 
 
-    def test(self,  threshold=0.5):
-        st = "1st Main Road, 2nd Cross"
-        st1 = "1st Main2nd Cross"
+    def inputmatching(self):
+        str2 = input("Enter the First String : ")
+        str1 = input("Enter the second String : ")
+        AddressBook.test(self, str2, str1)
+    def test(self, st, st1,threshold=0.5):
+        # st = "1st Main Road, 2nd Cross"
+        # st1 = "1st Main2nd Cross"
         stopwords = nltk.corpus.stopwords.words('english')
         stopwords.extend(string.punctuation)
         stopwords.append('')
-        print(stopwords)
-
-        # Creat tokenizer and stemmer
-        #tokenizer = nltk.word_tokenize(st)
         tokenizer = nltk.tokenize.TreebankWordTokenizer()
-
-        # print(stopwords)
-        # print(tokenizer)
-
-        #stemmer = nltk.stem.snowball.SnowballStemmer('english')
         stemmer = PorterStemmer()
-        lemmatiser = WordNetLemmatizer()
-        #
-        # """Check if a and b are matches."""
+
         tokens_a = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(st) \
                   if token.lower().strip(string.punctuation) not in stopwords]
-        print(tokens_a)
         tokens_b = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(st1) \
                     if token.lower().strip(string.punctuation) not in stopwords]
-        print(tokens_b)
+
         for token in tokens_a:
             print(stemmer.stem(token))
         stems_a = [stemmer.stem(token) for token in tokens_a]
-        print(stems_a)
-        lamn_b = [lemmatiser.lemmatize(token, pos="v") for token in tokens_b]
-        print(lamn_b)
-        print("Lemmatise %s: %s" % ("studying", lemmatiser.lemmatize("studying", pos="v")))
+
 
         stems_b = [stemmer.stem(token) for token in tokens_b]
-        print(stems_b)
-        #
-        # # Calculate Jaccard similarity
+
         ratio = len(set(stems_a).intersection(stems_b)) / float(len(set(stems_a).union(stems_b)))
         print(ratio >= threshold)
         return (ratio >= threshold)
+
+
+def n_dimesional_array():
+    data = np.arange(360).reshape((9, 4, 10))
+
+    with open('test.txt', 'w') as outfile:
+        outfile.write('# Array shape: {0}\n'.format(data.shape))
+
+        for data_slice in data:
+            np.savetxt(outfile, data_slice, fmt='%-7.2f')
+            outfile.write('# New slice\n')
+
+
+def readfromfile():
+
+    new_data = np.loadtxt('test.txt')
+    # Note that this returned a 2D array!
+    new_data = new_data.reshape((9, 4, 10))
+
+    print(new_data)
+    # Just to check that they're the same...
+
+
+def writing_inxcel():
+    data = np.arange(36).reshape((9, 4))
+    df = pandas.DataFrame(data)
+    filepath = 'my_excel_file.xlsx'
+    df.to_excel(filepath, index=False)
