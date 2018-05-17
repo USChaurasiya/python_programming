@@ -1,6 +1,17 @@
 import sys
 import pickle as pc
-from collections import Counter
+from stemming.porter2 import stem
+from nltk.stem import PorterStemmer
+
+from nltk.stem import WordNetLemmatizer
+
+import  porterstemmer
+import nltk.corpus
+#import nltk.tokenize.punkt
+import nltk.stem.snowball
+import string
+
+
 
 Users = []
 
@@ -125,3 +136,45 @@ class AddressBook:
                     counter += 1
         print("Number of occurrence of Given last name is :", counter)
 
+
+    def test(self,  threshold=0.5):
+        st = "1st Main Road, 2nd Cross"
+        st1 = "1st Main2nd Cross"
+        stopwords = nltk.corpus.stopwords.words('english')
+        stopwords.extend(string.punctuation)
+        stopwords.append('')
+        print(stopwords)
+
+        # Creat tokenizer and stemmer
+        #tokenizer = nltk.word_tokenize(st)
+        tokenizer = nltk.tokenize.TreebankWordTokenizer()
+
+        # print(stopwords)
+        # print(tokenizer)
+
+        #stemmer = nltk.stem.snowball.SnowballStemmer('english')
+        stemmer = PorterStemmer()
+        lemmatiser = WordNetLemmatizer()
+        #
+        # """Check if a and b are matches."""
+        tokens_a = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(st) \
+                  if token.lower().strip(string.punctuation) not in stopwords]
+        print(tokens_a)
+        tokens_b = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(st1) \
+                    if token.lower().strip(string.punctuation) not in stopwords]
+        print(tokens_b)
+        for token in tokens_a:
+            print(stemmer.stem(token))
+        stems_a = [stemmer.stem(token) for token in tokens_a]
+        print(stems_a)
+        lamn_b = [lemmatiser.lemmatize(token, pos="v") for token in tokens_b]
+        print(lamn_b)
+        print("Lemmatise %s: %s" % ("studying", lemmatiser.lemmatize("studying", pos="v")))
+
+        stems_b = [stemmer.stem(token) for token in tokens_b]
+        print(stems_b)
+        #
+        # # Calculate Jaccard similarity
+        ratio = len(set(stems_a).intersection(stems_b)) / float(len(set(stems_a).union(stems_b)))
+        print(ratio >= threshold)
+        return (ratio >= threshold)

@@ -6,6 +6,7 @@ import src.PYProject as py
 
 addressbook = py.AddressBook()
 #addressbook.addpersontoaddressbook()
-addressbook.occurenceoffname()
-addressbook.occurrenceoflname()
+#addressbook.occurenceoffname()
+#addressbook.occurrenceoflname()
 #addressbook.ensuringsameaddress()
+addressbook.test()
