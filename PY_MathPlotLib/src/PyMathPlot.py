@@ -126,7 +126,7 @@ def plot_line_with_diff_format():
 
 def multiple_type_chart():
     #Python program to create multiple types of charts (a simple curve and plot some quantities) on a single set of axes
-        
+
     data = [(dt.datetime.strptime('2016-10-03', "%Y-%m-%d"), 772.559998),
             (dt.datetime.strptime('2016-10-04', "%Y-%m-%d"), 776.429993),
             (dt.datetime.strptime('2016-10-05', "%Y-%m-%d"), 776.469971),
@@ -143,3 +143,28 @@ def multiple_type_chart():
         [date.strftime("%Y-%m-%d") for (date, value) in data]
     )
     matplot.show()
+
+def creating_multiple_plot():
+    # Python Program to create Multiple Plot
+    fig = matplot.figure()
+    fig.subplots_adjust(bottom=0.020, left=0.020, top=0.900, right=0.900)
+
+    matplot.subplot(2, 1, 1)
+    matplot.xticks(())
+    matplot.yticks(())
+
+    matplot.subplot(2, 3, 4)
+    matplot.xticks(())
+    matplot.yticks(())
+
+    matplot.subplot(2, 3, 5)
+    matplot.xticks(())
+    matplot.yticks(())
+
+    matplot.subplot(2, 3, 6)
+    matplot.xticks(())
+    matplot.yticks(())
+
+    matplot.show()
+
+def 

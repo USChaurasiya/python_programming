@@ -8,4 +8,5 @@ import src.PyMathPlot as plot
 #plot.plot_line_with_marker()
 #plot.plot_quantities()
 #plot.plot_line_with_diff_format()
-plot.multiple_type_chart()
+#plot.multiple_type_chart()
+plot.creating_multiple_plot()
