@@ -167,4 +167,60 @@ def creating_multiple_plot():
 
     matplot.show()
 
-def 
+
+def draw_bar_graph():
+    x = ['JavaScript', 'Python', 'Java', 'Ruby', 'Php', 'C++', 'CSS']
+    popularity = [23, 10, 9.8, 8.7, 5.59, 4.13, 3.35]
+    x_pos = [i for i, _ in enumerate(x)]
+    print(x_pos)
+    matplot.bar(x_pos, popularity, color='blue')
+    matplot.xlabel("Languages")
+    matplot.ylabel("Popularity")
+    matplot.title("Most Pull Request \n" + "From Github")
+    matplot.xticks(x_pos, x)
+    # # Turn on the grid
+    matplot.minorticks_on()
+    matplot.grid(which='major', linestyle='-', linewidth='0.5', color='red')
+    matplot.show()
+
+def bar_graph_with_different_color():
+    x = ['JavaScript', 'Python', 'Java', 'Ruby', 'Php', 'C++', 'CSS']
+    popularity = [23, 10, 9.8, 8.7, 5.59, 4.13, 3.35]
+    x_pos = [i for i, _ in enumerate(x)]
+    matplot.bar(x_pos, popularity, color=['red', 'black', 'green', 'blue', 'yellow', 'cyan', 'pink'])
+
+    #matplot.bar(x_pos, popularity, color='blue')
+    matplot.xlabel("Languages")
+    matplot.ylabel("Popularity")
+    matplot.title("Most Pull Request \n" + "From Github")
+    matplot.xticks(x_pos, x)
+    # # Turn on the grid
+    matplot.minorticks_on()
+    matplot.grid(which='major', linestyle='-', linewidth='0.5', color='red')
+    matplot.show()
+
+
+def draw_pie_chart():
+    languages = 'JavaScript', 'Python', 'Java', 'Ruby', 'Php', 'C++', 'CSS'
+    popuratity = [23, 10, 9.8, 8.7, 5.59, 4.13, 3.35]
+    colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#8c784b"]
+    # explode 1st slice
+    explode = (0.1, 0, 0, 0, 0, 0, 0)
+    # Plot
+    matplot.pie(popuratity, explode=explode, labels=languages, colors=colors,
+            autopct='%1.1f%%', shadow=True, startangle=140)
+
+    matplot.axis('equal')
+    matplot.show()
+
+
+def pie_chart_for_country():
+    df = pnd.read_csv('medal.csv')
+    country_data = df["country"]
+    medal_data = df["gold_medal"]
+    colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#8c564b"]
+    explode = (0.1, 0, 0, 0, 0)
+    matplot.pie(medal_data, labels=country_data, explode=explode, colors=colors,
+            autopct='%1.1f%%', shadow=True, startangle=140)
+    matplot.title("Gold medal achievements of five most successful\n" + "countries in 2018 Commonwealth Games")
+    matplot.show()
