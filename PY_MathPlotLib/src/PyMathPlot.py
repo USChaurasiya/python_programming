@@ -204,12 +204,9 @@ def draw_pie_chart():
     languages = 'JavaScript', 'Python', 'Java', 'Ruby', 'Php', 'C++', 'CSS'
     popuratity = [23, 10, 9.8, 8.7, 5.59, 4.13, 3.35]
     colors = ["#1f77b4", "#ff7f0e", "#2ca02c", "#d62728", "#9467bd", "#8c564b", "#8c784b"]
-    # explode 1st slice
     explode = (0.1, 0, 0, 0, 0, 0, 0)
-    # Plot
     matplot.pie(popuratity, explode=explode, labels=languages, colors=colors,
             autopct='%1.1f%%', shadow=True, startangle=140)
-
     matplot.axis('equal')
     matplot.show()
 

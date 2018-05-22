@@ -70,6 +70,8 @@ class AddressBook:
         pkl_file = open('pyproject.pkl', 'rb')
         AddressBook.person_storage = pc.load(pkl_file)
 
+
+
     def addpersontoaddressbook(self):
         print("------------------------Adding Person in Address book-----------------------", '\n')
         keys = {"fname", "lname", "streetaddress", "city", "state", "country", "mobile", "email"}
@@ -84,18 +86,19 @@ class AddressBook:
         person.mobile = sys.argv[7]
         person.email = sys.argv[8]
 
-        AddressBook.set_key(AddressBook.person_storage, 'fname', person.fname)
-        AddressBook.set_key(AddressBook.person_storage, 'lname', person.lname)
-        AddressBook.set_key(AddressBook.person_storage, 'streetaddress', person.streetadd)
-        AddressBook.set_key(AddressBook.person_storage, 'city', person.city)
-        AddressBook.set_key(AddressBook.person_storage, 'state', person.state)
-        AddressBook.set_key(AddressBook.person_storage, 'country', person.country)
-        AddressBook.set_key(AddressBook.person_storage, 'mobile', person.mobile)
-        AddressBook.set_key(AddressBook.person_storage, 'email', person.email)
 
-        output = open('pyproject.pkl', 'wb')
-        pc._dump(AddressBook.person_storage, output)
-        print(AddressBook.person_storage)
+        # AddressBook.set_key(AddressBook.person_storage, 'fname', person.fname)
+        # AddressBook.set_key(AddressBook.person_storage, 'lname', person.lname)
+        # AddressBook.set_key(AddressBook.person_storage, 'streetaddress', person.streetadd)
+        # AddressBook.set_key(AddressBook.person_storage, 'city', person.city)
+        # AddressBook.set_key(AddressBook.person_storage, 'state', person.state)
+        # AddressBook.set_key(AddressBook.person_storage, 'country', person.country)
+        # AddressBook.set_key(AddressBook.person_storage, 'mobile', person.mobile)
+        # AddressBook.set_key(AddressBook.person_storage, 'email', person.email)
+        #
+        # output = open('pyproject.pkl', 'wb')
+        # pc._dump(AddressBook.person_storage, output)
+        # print(AddressBook.person_storage)
 
     def set_key(dictionary, key, value):
         if key not in dictionary:
@@ -141,6 +144,8 @@ class AddressBook:
         str2 = input("Enter the First String : ")
         str1 = input("Enter the second String : ")
         AddressBook.test(self, str2, str1)
+
+
     def test(self, st, st1,threshold=0.5):
         # st = "1st Main Road, 2nd Cross"
         # st1 = "1st Main2nd Cross"
