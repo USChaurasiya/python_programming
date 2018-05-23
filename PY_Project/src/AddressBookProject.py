@@ -1,5 +1,15 @@
-import pickle as pc
 import sys
+import numpy as np
+import pickle as pc
+import pandas
+from stemming.porter2 import stem
+from nltk.stem import PorterStemmer
+from openpyxl import workbook
+import  porterstemmer
+import nltk.corpus
+#import nltk.tokenize.punkt
+import nltk.stem.snowball
+import string
 
 class PersonAddressBook:
     person_address= {}
@@ -54,6 +64,8 @@ class PersonAddressBook:
         person_address['address']['state'].append(state)
         person_address['address']['city'].append(city)
         person_address['address']['country'].append(country)
+
+
         person_address['address']['streetaddress'].append(streetadd)
         person_address['mobile'].update({mobile: 1})
         person_address['email'].update({email: 1})
@@ -67,6 +79,41 @@ class PersonAddressBook:
         return False
 
     def is_lname_present(self, lname, address_dict):
-        if lname in person_address['fname']:
+        if lname in person_address['lname']:
             return True
         return False
+
+    def is_address_present(self, streetaddress):
+
+        for add in person_address['address']['streetaddress']:
+            print(add, self.test(streetaddress, add))
+            if self.test(streetaddress, add):
+                return True
+            else:
+                return False
+
+
+    def test(self, st, st1, threshold=0.5):
+        # st = "1st Main Road, 2nd Cross"
+        # st1 = "1st Main2nd Cross"
+        stopwords = nltk.corpus.stopwords.words('english')
+        stopwords.extend(string.punctuation)
+        stopwords.append('')
+        tokenizer = nltk.tokenize.TreebankWordTokenizer()
+        stemmer = PorterStemmer()
+
+        tokens_a = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(st) \
+                    if token.lower().strip(string.punctuation) not in stopwords]
+        tokens_b = [token.lower().strip(string.punctuation) for token in tokenizer.tokenize(st1) \
+                    if token.lower().strip(string.punctuation) not in stopwords]
+
+        for token in tokens_a:
+            print(stemmer.stem(token))
+        stems_a = [stemmer.stem(token) for token in tokens_a]
+
+        stems_b = [stemmer.stem(token) for token in tokens_b]
+
+        ratio = len(set(stems_a).intersection(stems_b)) / float(len(set(stems_a).union(stems_b)))
+        print(ratio)
+        #print(ratio >= threshold)
+        return (ratio >= threshold)
