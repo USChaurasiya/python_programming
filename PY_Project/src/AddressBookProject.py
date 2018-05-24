@@ -27,7 +27,6 @@ class PersonAddressBook:
         print(person_address)
 
 
-
     @staticmethod
     def writing_in_file(self, object):
         output = open('pyproject.pkl', 'wb')
