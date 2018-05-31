@@ -50,6 +50,8 @@ class PersonAddressBook:
         mobile = sys.argv[7]
         email = sys.argv[8]
 
+    # def add_details(self, dict_name, data):
+
         if PersonAddressBook.is_fname_present(self, fname, person_address):
             person_address['fname'][fname] += 1
         else:
